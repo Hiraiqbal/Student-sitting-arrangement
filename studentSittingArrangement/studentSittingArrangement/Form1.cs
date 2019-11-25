@@ -18,23 +18,29 @@ namespace studentSittingArrangement
 
         int mainSection = 0;
         //Student[,] SittingAlotmnet;
-        // functions
-        //functions
         private void seatAlocator()
         {
+            int i, j;
             int studNo;
             int temp = mainSection;
-            for(int i=0;i<rows;i++)
+            //counters
+            int[] cS = { 0, 0, 0, 0 };
+            //counters
+            for (i=0;i<rows;i++)
             {
+                temp = mainSection;
                 studNo = i;
-                for(int j=0;j<columns;j++)
+                for(j=0;j<columns;j++)
                 {
+                    if (cS[temp] < Arraystore[temp].Count)//sec A=>0,B=>1,C=>2,D=>3
+                    {
+                        Arraystore[temp][studNo].RowNum1 = Convert.ToString(i);
+                        Arraystore[temp][studNo].ColumnNum1 = Convert.ToString(j);
+                        cS[temp]++;
+                    }
 
-                    Arraystore[temp][studNo].RowNum1 = Convert.ToString(i);
-                    Arraystore[temp][studNo].ColumnNum1 = Convert.ToString(j);
-                    
                     //jb tk rows complete ni hoti
-                    if (temp < 4)//4 kio k section 4 h A,B,C,D
+                    if (temp < 3)//4 kio k section 4 h A,B,C,D
                         temp++;
                     else
                     {
@@ -43,7 +49,7 @@ namespace studentSittingArrangement
                     }
                 }
                 //jb tk rows complete ni hoti
-                if (mainSection < 4)//4 kio k section 4 h A,B,C,D
+                if (mainSection < 3)//4 kio k section 4 h A,B,C,D
                     mainSection++;
                 else
                     mainSection = 0;
@@ -57,7 +63,8 @@ namespace studentSittingArrangement
         private void GenrteListS_Click(object sender, EventArgs e)
         {
             seatAlocator();
-            dataGridView1.DataSource = Arraystore[0];
+            var allList = Arraystore[0].Concat(Arraystore[1]).Concat(Arraystore[2]).Concat(Arraystore[3]).ToList();
+            dataGridView1.DataSource = allList;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -77,11 +84,9 @@ namespace studentSittingArrangement
             {
                 columns = Convert.ToInt32(txtNoOfColC.Text);
                 rows = Convert.ToInt32(txtNoOfRowsC.Text);
-
                 //SittingAlotmnet = new Student[columns,rows];
                 txtNoOfColC.ReadOnly = true;
                 txtNoOfRowsC.ReadOnly = true;
-
             }
             Student std = new Student();
             std.Sections = txtsection.Text;

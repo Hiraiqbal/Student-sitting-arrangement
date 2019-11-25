@@ -61,7 +61,7 @@
             // 
             // GenrteListS
             // 
-            this.GenrteListS.Location = new System.Drawing.Point(356, 374);
+            this.GenrteListS.Location = new System.Drawing.Point(35, 333);
             this.GenrteListS.Name = "GenrteListS";
             this.GenrteListS.Size = new System.Drawing.Size(75, 23);
             this.GenrteListS.TabIndex = 3;
@@ -72,9 +72,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(271, 28);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGridView1.Location = new System.Drawing.Point(159, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 328);
+            this.dataGridView1.Size = new System.Drawing.Size(406, 409);
             this.dataGridView1.TabIndex = 4;
             // 
             // ADD
