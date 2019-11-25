@@ -8,9 +8,9 @@ namespace studentSittingArrangement
 {
     class Student
     {
-        private string sections="";
-        private string ColumnNum="-1";
-        private string RowNum="-1";
+        private string sections=""; // user will enter number of sections 
+        private string ColumnNum="-1"; // datatype for number of columns 
+        private string RowNum="-1"; //datatype for number of rows
 
         public string Sections
         {
