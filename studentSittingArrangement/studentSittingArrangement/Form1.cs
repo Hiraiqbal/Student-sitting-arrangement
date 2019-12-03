@@ -29,14 +29,17 @@ namespace studentSittingArrangement
             for (i=0;i<rows;i++)
             {
                 temp = mainSection;
-                studNo = i;
+                studNo = 0;
                 for(j=0;j<columns;j++)
                 {
                     if (cS[temp] < Arraystore[temp].Count)//sec A=>0,B=>1,C=>2,D=>3
                     {
-                        Arraystore[temp][studNo].RowNum1 = Convert.ToString(i);
-                        Arraystore[temp][studNo].ColumnNum1 = Convert.ToString(j);
-                        cS[temp]++;
+                        if(Arraystore[temp][studNo].RowNum1 == "-1"&& Arraystore[temp][studNo].RowNum1 == "-1")
+                        {
+                            Arraystore[temp][studNo].RowNum1 = Convert.ToString(i);
+                            Arraystore[temp][studNo].ColumnNum1 = Convert.ToString(j);
+                            cS[temp]++;
+                        }
                     }
 
                     //jb tk rows complete ni hoti
@@ -78,6 +81,16 @@ namespace studentSittingArrangement
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ADD_Click(object sender, EventArgs e)
         {
             if (columns == - 1 && rows == -1)
@@ -89,7 +102,7 @@ namespace studentSittingArrangement
                 txtNoOfRowsC.ReadOnly = true;
             }
             Student std = new Student();
-            std.Sections = txtsection.Text;
+            std.Sections = txtsection.Text.ToUpper();
             if (txtsection.Text.Trim().ToUpper() == "A")
             {
                 //sec A
@@ -115,7 +128,9 @@ namespace studentSittingArrangement
                 MessageBox.Show("invalid section");
             }
             //datastore.Add(std);
-            
+            var allList = Arraystore[0].Concat(Arraystore[1]).Concat(Arraystore[2]).Concat(Arraystore[3]).ToList();
+            dataGridView1.DataSource = "";
+            dataGridView1.DataSource = allList;
         }
     }
 }
