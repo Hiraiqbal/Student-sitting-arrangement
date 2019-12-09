@@ -43,7 +43,7 @@ namespace studentSittingArrangement
                     }
 
                     //jb tk rows complete ni hoti
-                    if (temp < 3)//4 kio k section 4 h A,B,C,D
+                    if (temp < 3)//section 4 h A,B,C,D
                         temp++;
                     else
                     {
@@ -52,7 +52,7 @@ namespace studentSittingArrangement
                     }
                 }
                 //jb tk rows complete ni hoti
-                if (mainSection < 3)//4 kio k section 4 h A,B,C,D
+                if (mainSection < 3)//section 4 h A,B,C,D
                     mainSection++;
                 else
                     mainSection = 0;
